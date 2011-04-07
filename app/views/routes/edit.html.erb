@@ -4,6 +4,7 @@
     <%= text_field :route, :name %>
   </p>
   <p class="button"><%= submit_tag "Save" %></p>
+  <%= link_to 'Add location', new_route_location_url( @route ) %>
   <%= link_to :back, :back %>
   <%= link_to :home, :root %>
 <% end %>
