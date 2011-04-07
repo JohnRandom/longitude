@@ -1,0 +1,7 @@
+<% content_for :head do %>
+  <title>Longitude - <%= @route.name %> </title>
+<% end %>
+
+<h1>Route: <%= @route.name %></h1>
+
+<%= link_to 'My routes', :controller => :routes, :action => :index %>

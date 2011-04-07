@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110406233740) do
+ActiveRecord::Schema.define(:version => 20110407130532) do
+
+  create_table "locations", :force => true do |t|
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "entity_id"
+    t.string   "entity_type", :default => "route"
+    t.datetime "created_at"
+  end
 
   create_table "routes", :force => true do |t|
     t.string   "name"

@@ -1,0 +1,9 @@
+<%= form_tag @route, :method => :put do %>
+  <p>
+    <%= label_tag :name %>
+    <%= text_field :route, :name %>
+  </p>
+  <p class="button"><%= submit_tag "Save" %></p>
+  <%= link_to :back, :back %>
+  <%= link_to :home, :root %>
+<% end %>

@@ -1,0 +1,24 @@
+<h2>Your Routes available:</h2>
+
+<% if @routes %>
+  <table>
+  <% @routes.each do |route| %>
+    <tr>
+      <td>
+        <%= link_to route.name, route %>
+      </td>
+      <td>
+        <%= button_to :delete, {:action=>:destroy, :controller=>:routes, :id=>route.id}, :confirm => 'Delete: sure?', :method => :delete %>
+      </td>
+      <td>
+        <%= link_to :edit, {:action=>:edit, :controller=>:routes, :id=>route.id} %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+<% else %>
+  <p>You don't own any routes.</p>
+<% end %>
+<br />
+<br />
+<%= link_to "create new route", :controller => :routes, :action => :new %>

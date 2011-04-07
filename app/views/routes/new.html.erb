@@ -1,0 +1,10 @@
+<%= form_tag :routes do %>
+  <%= render :partial => 'shared/form_errors', :locals => { :target => @route } %>
+  <p>
+    <%= label_tag :name %><br />
+    <%= text_field_tag :name, params[:name] %>
+  </p>
+  <p class="button"><%= submit_tag "Create route" %></p>
+  </p>
+<% end %>
+<%= link_to 'back', :back %>
