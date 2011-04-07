@@ -4,12 +4,15 @@ Longitude::Application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
 
-  # post "/"
 
   # REST resources
   resources :routes
   resources :users
   resources :sessions
+
+  resources :routes do
+    resources :locations
+  end
 
   root :controller => "statics", :action => "start"
 end

@@ -1,0 +1,12 @@
+<%= form_tag [@route, @location] do %>
+  <%= render :partial => 'shared/form_errors', :locals => { :target => @location } %>
+  <p>
+    <%= label_tag :latitude %>
+    <%= text_field :location, :latitude %>
+  </p>
+  <p>
+    <%= label_tag :longitude %>
+    <%= text_field :location, :longitude %>
+  </p>
+  <p class="button"><%= submit_tag "Add location" %></p>
+<% end %>
