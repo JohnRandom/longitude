@@ -6,6 +6,8 @@ gem 'rails', '3.0.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'mysql', :require => 'bcrypt'
+gem "bcrypt-ruby", :require => "bcrypt"
 
 # Use unicorn as the web server
 # gem 'unicorn'
