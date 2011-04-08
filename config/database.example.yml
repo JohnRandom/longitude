@@ -2,25 +2,19 @@ development:
   adapter: mysql
   encoding: utf8
   database: longitude_dev
-#  pool: 5
-  username: root
+  username: username
   password:
-#  socket: /tmp/mysql.sock
 
 test:
   adapter: mysql
   encoding: utf8
   database: longitude_test
-#  pool: 5
-  username: root
+  username: username
   password:
- # socket: /tmp/mysql.sock
 
 production:
   adapter: mysql
   encoding: utf8
   database: longitude_prod
-#  pool: 5
-  username: root
+  username: username
   password:
-#  socket: /tmp/mysql.sock
