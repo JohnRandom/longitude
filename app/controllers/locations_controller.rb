@@ -14,7 +14,10 @@ class LocationsController < ApplicationController
     @location = @route.locations.create! :latitude => lat, :longitude => long, :user_id => current_user.id
 
     flash.now.alert = "Location '#{@location.latitude}:#{@location.longitude}' on '#{@route.name}' created"
-    redirect_to edit_route_url(@route)
+    respond_to do |format|
+      format.html { redirect_to edit_route_url(@route) }
+      format.json { render :json => @location }
+    end
   end
 
   def destroy
