@@ -2,7 +2,7 @@
   <%= render :partial => 'shared/form_errors', :locals => { :target => @route } %>
   <p>
     <%= label_tag :name %><br />
-    <%= text_field_tag :name, params[:name] %>
+    <%= text_field :route, :name %>
   </p>
   <p class="button"><%= submit_tag "Create route" %></p>
 <% end %>

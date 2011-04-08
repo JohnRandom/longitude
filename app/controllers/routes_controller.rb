@@ -1,8 +1,6 @@
 class RoutesController < ApplicationController
 
-  # before filter
   before_filter :verify_loged_in
-  before_filter :verify_params, :only => :create
 
   respond_to :html, :json
 
@@ -29,14 +27,13 @@ class RoutesController < ApplicationController
   end
 
   def create
-    p params
-    route_name = params[:name]
+    route_name = params[:route][:name]
 
     @route = Route.create! :name => route_name, :user_id => current_user.id
-    redirect_to :action => :index and return
 
     respond_to do |format|
-      format.json  { render :json => @route }
+      format.html { redirect_to :action => :index and return }
+      format.json { render :json => @route }
     end
   end
 
@@ -45,10 +42,12 @@ class RoutesController < ApplicationController
   end
 
   def update
-    @route = Route.find_by_id_and_user_id! params[:id], current_user.id
-    @route.update_attribute( :name, params[:route][:name] ) if @route
+    new_route_name = params[:route][:name]
 
-      respond_to do |format|
+    @route = Route.find_by_id_and_user_id! params[:id], current_user.id
+    @route.update_attribute( :name, new_route_name ) if @route
+
+     respond_to do |format|
       format.html { redirect_to :action => :index and return }
       format.json { render :json => @route }
     end
@@ -65,12 +64,4 @@ class RoutesController < ApplicationController
     end
   end
 
-  private
-
-  def verify_params
-    unless params[:name]
-      flash.now.alert = "Invalid request parameters"
-      redirect_to :controller => 'routes', :action => 'index'
-    end
-  end
 end
