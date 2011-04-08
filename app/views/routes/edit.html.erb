@@ -42,8 +42,8 @@ $(document).ready(function() {
             route: {name: newName}
           },
           success: function(data) {
-            console.log(data);
-            $('#route-name').text(data.name);
+            console.log('data.name:', data.route.name, 'span:', $('#route-name'));
+            $('#route-name').text(data.route.name);
           }
         });
 

@@ -1,12 +1,15 @@
 <% if route.locations %>
 <table>
   <% route.locations.each do |l|%>
-    <tr>
+    <tr id="<%= route_url %>">
       <td>
         <%= l.latitude %>
       </td>
       <td>
         <%= l.longitude %>
+      </td>
+      <td>
+        <%= button_to :delete, {:action=>:destroy, :controller=>:locations, :route_id=>route.id, :id=>l.id}, :method => :delete %>
       </td>
     </tr>
   <% end %>
