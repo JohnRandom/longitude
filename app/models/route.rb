@@ -3,6 +3,6 @@ class Route < ActiveRecord::Base
   has_many :locations, :as => :entity, :dependent => :destroy
 
   # validations
-  validates_presence_of :user_id, :name
-
+  validate :user_id, :presence => true
+  validate :name, :presence => true
 end

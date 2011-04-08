@@ -18,9 +18,5 @@ describe RoutesController do
       Route.should_receive(:create!).with(:name => :test_route, :user_id => @user.id).and_return(stub.as_null_object)
       post :create, :route => {:name => :test_route}
     end
-
-    it 'should raise an error on invalid post data' do
-      Route.create!
-    end
   end
 end

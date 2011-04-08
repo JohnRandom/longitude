@@ -1,6 +1,8 @@
 class LocationsController < ApplicationController
   before_filter :verify_loged_in
 
+  respond_to :html, :json
+
   def new
     @route = Route.find params[:route_id]
     @location = Location.new
