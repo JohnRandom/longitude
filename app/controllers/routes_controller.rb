@@ -31,6 +31,7 @@ class RoutesController < ApplicationController
 
     @route = Route.create! :name => route_name, :user_id => current_user.id
 
+    flash.alert = "Route created"
     respond_to do |format|
       format.html { redirect_to :action => :index and return }
       format.json { render :json => @route }
@@ -47,7 +48,8 @@ class RoutesController < ApplicationController
     @route = Route.find_by_id_and_user_id! params[:id], current_user.id
     @route.update_attribute( :name, new_route_name ) if @route
 
-     respond_to do |format|
+    flash.alert = "Route '#{@route.name}' updated"
+    respond_to do |format|
       format.html { redirect_to :action => :index and return }
       format.json { render :json => @route }
     end
@@ -57,7 +59,7 @@ class RoutesController < ApplicationController
     @route = Route.find_by_id_and_user_id! params[:id], current_user.id
     @route.destroy if @route
 
-    flash.now.alert = "Route '#{@route.name}' deleted."
+    flash.alert = "Route '#{@route.name}' deleted."
     respond_to do |format|
       format.html { redirect_to :action => :index and return }
       format.json { head :deleted }

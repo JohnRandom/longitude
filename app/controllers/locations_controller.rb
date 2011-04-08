@@ -15,7 +15,7 @@ class LocationsController < ApplicationController
     @route = Route.find params[:route_id]
     @location = @route.locations.create! :latitude => lat, :longitude => long, :user_id => current_user.id
 
-    flash.now.alert = "Location '#{@location.latitude}:#{@location.longitude}' on '#{@route.name}' created"
+    flash.alert = "Location '#{@location.latitude}:#{@location.longitude}' on '#{@route.name}' created"
     respond_to do |format|
       format.html { redirect_to edit_route_url(@route) }
       format.json { render :json => @location }
@@ -28,7 +28,7 @@ class LocationsController < ApplicationController
 
     logger.debug "edit_route_url: #{edit_route_url params[:route_id]}"
 
-    flash.now.alert = "Location deleted."
+    flash.alert = "Location deleted."
     respond_to do |format|
       format.html { redirect_to edit_route_url(params[:route_id]) and return }
       format.json { head :deleted }
