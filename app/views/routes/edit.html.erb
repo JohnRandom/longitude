@@ -1,10 +1,52 @@
+<h1>Route: <span id="route-name"><%= @route.name %></span></h1>
+<h2>Update via http:submit</h2>
 <%= form_tag @route, :method => :put do %>
   <p>
     <%= label_tag :name %>
     <%= text_field :route, :name %>
   </p>
   <p class="button"><%= submit_tag "Save" %></p>
-  <%= link_to 'Add location', new_route_location_url( @route ) %>
-  <%= link_to :back, :back %>
-  <%= link_to :home, :root %>
+<% end %>
+
+<h2>Update via Ajax</h2>
+<%= form_tag @route do %>
+  <p>
+    <%= label_tag :name %>
+    <%= text_field :route, :name %>
+  </p>
+  <p id="ajax-submit" class="button"><%= submit_tag "Save" %></p>
+<% end %>
+
+<%= render :partial => 'routes/locations_table', :locals => {:route => @route} %>
+<%= link_to 'Add location', new_route_location_url( @route ) %>
+<%= link_to :back, :back %>
+<%= link_to :home, :root %>
+
+<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+
+<%= javascript_tag do %>
+$(document).ready(function() {
+
+    $('#ajax-submit').click(function(evt) {
+        evt.preventDefault(); evt.stopPropagation();
+
+        $this = $(this);
+        $form = $this.parent();
+        newName = $form.find('input[type="text"]').val();
+
+        console.log('AUTH_TOKEN:', AUTH_TOKEN);
+
+        $.ajax('<%= route_url %>.json', {
+          type: 'PUT',
+          data: {
+            route: {name: newName}
+          },
+          success: function(data) {
+            console.log(data);
+            $('#route-name').text(data.name);
+          }
+        });
+
+    });
+});
 <% end %>
