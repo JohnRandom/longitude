@@ -2,9 +2,11 @@
   <% if current_user %>
     Logged in as <%= current_user.email %>.
     <%= link_to "Log out", log_out_path %>
+   | <%= link_to 'My routes', :controller => :routes, :action => :index %>
   <% else %>
     <%= link_to "Sign up", sign_up_path %> or
     <%= link_to "log in", log_in_path %>
   <% end %>
-  <%= link_to :home, :root %>
+   | <%= link_to :home, :root %>
+   | <%= link_to :documentation, :documentation %>
 </div>

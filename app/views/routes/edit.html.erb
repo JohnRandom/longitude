@@ -19,8 +19,6 @@
 
 <%= render :partial => 'routes/locations_table', :locals => {:route => @route} %>
 <%= link_to 'Add location', new_route_location_url( @route ) %>
-<%= link_to :back, :back %>
-<%= link_to :home, :root %>
 
 <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 
