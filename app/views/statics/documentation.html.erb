@@ -1,0 +1,77 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag "documentation" %>
+<% end %>
+
+<h1>API Documentation</h1>
+
+<h2>Formats</h2>
+
+<p>Valid formats for all resource requests are [ html | json ].</p>
+
+<h2>rake routes</h2>
+
+<h3>Misc.</h3>
+<table>
+  <thead>
+    <tr><th>url name</th> <th>request type</th><th>url</th><th>parameters</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>               root</td> <td>            </td><td>/(.:format)                                    </td><td></td></tr>
+    <tr><td>            log_out</td> <td>GET         </td><td>/log_out(.:format)                             </td><td></td></tr>
+    <tr><td>            sign_up</td> <td>GET         </td><td>/sign_up(.:format)                             </td><td></td></tr>
+    <tr><td>             log_in</td> <td>GET         </td><td>/log_in(.:format)                              </td><td></td></tr>
+    <tr><td>      documentation</td> <td>GET         </td><td>/documentation(.:format)                       </td><td></td></tr>
+  </tbody>
+</table>
+<h3>Users</h3>
+<table>
+  <thead>
+    <tr><th>url name</th> <th>request type</th><th>url</th><th>parameters</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>              users</td> <td>GET         </td><td>/users(.:format)                               </td><td></td></tr>
+    <tr><td>                   </td> <td>POST        </td><td>/users(.:format)                               </td><td></td></tr>
+    <tr><td>           new_user</td> <td>GET         </td><td>/users/new(.:format)                           </td><td></td></tr>
+    <tr><td>          edit_user</td> <td>GET         </td><td>/users/:id/edit(.:format)                      </td><td></td></tr>
+    <tr><td>               user</td> <td>GET         </td><td>/users/:id(.:format)                           </td><td></td></tr>
+    <tr><td>                   </td> <td>PUT         </td><td>/users/:id(.:format)                           </td><td></td></tr>
+    <tr><td>                   </td> <td>DELETE      </td><td>/users/:id(.:format)                           </td><td></td></tr>
+  </tbody>
+</table>
+<h3>Sessions</h3>
+<table>
+  <thead>
+    <tr><th>url name</th> <th>request type</th><th>url</th><th>parameters</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>           sessions</td> <td>GET         </td><td>/sessions(.:format)                            </td><td></td></tr>
+    <tr><td>                   </td> <td>POST        </td><td>/sessions(.:format)                            </td><td></td></tr>
+    <tr><td>        new_session</td> <td>GET         </td><td>/sessions/new(.:format)                        </td><td></td></tr>
+    <tr><td>       edit_session</td> <td>GET         </td><td>/sessions/:id/edit(.:format)                   </td><td></td></tr>
+    <tr><td>            session</td> <td>GET         </td><td>/sessions/:id(.:format)                        </td><td></td></tr>
+    <tr><td>                   </td> <td>PUT         </td><td>/sessions/:id(.:format)                        </td><td></td></tr>
+    <tr><td>                   </td> <td>DELETE      </td><td>/sessions/:id(.:format)                        </td><td></td></tr>
+  </tbody>
+</table>
+<h3>Routes &amp; Locations</h3>
+<table>
+  <thead>
+    <tr><th>url name</th> <th>request type</th><th>url</th><th>parameters</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>    route_locations</td> <td>GET         </td><td>/routes/:route_id/locations(.:format)          </td><td></td></tr>
+    <tr><td>                   </td> <td>POST        </td><td>/routes/:route_id/locations(.:format)          </td><td></td></tr>
+    <tr><td> new_route_location</td> <td>GET         </td><td>/routes/:route_id/locations/new(.:format)      </td><td></td></tr>
+    <tr><td>edit_route_location</td> <td>GET         </td><td>/routes/:route_id/locations/:id/edit(.:format) </td><td></td></tr>
+    <tr><td>     route_location</td> <td>GET         </td><td>/routes/:route_id/locations/:id(.:format)      </td><td></td></tr>
+    <tr><td>                   </td> <td>PUT         </td><td>/routes/:route_id/locations/:id(.:format)      </td><td></td></tr>
+    <tr><td>                   </td> <td>DELETE      </td><td>/routes/:route_id/locations/:id(.:format)      </td><td></td></tr>
+    <tr><td>                   </td> <td>GET         </td><td>/routes(.:format)                              </td><td></td></tr>
+    <tr><td>                   </td> <td>POST        </td><td>/routes(.:format)                              </td><td></td></tr>
+    <tr><td>                   </td> <td>GET         </td><td>/routes/new(.:format)                          </td><td></td></tr>
+    <tr><td>                   </td> <td>GET         </td><td>/routes/:id/edit(.:format)                     </td><td></td></tr>
+    <tr><td>                   </td> <td>GET         </td><td>/routes/:id(.:format)                          </td><td></td></tr>
+    <tr><td>                   </td> <td>PUT         </td><td>/routes/:id(.:format)                          </td><td></td></tr>
+    <tr><td>                   </td> <td>DELETE      </td><td>/routes/:id(.:format)                          </td><td></td></tr>
+  </tbody>
+</table>

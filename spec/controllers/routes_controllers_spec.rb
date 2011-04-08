@@ -3,8 +3,8 @@ require 'spec_helper'
 describe RoutesController do
 
   before(:each) do
-      @user = log_in
-    end
+    @user = log_in
+  end
 
   describe 'show' do
     it 'should fetch the right route' do

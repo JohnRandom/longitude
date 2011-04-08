@@ -8,6 +8,7 @@
 
 <%= render :partial => "shared/user_nav", :locals => {:current_user => current_user} %>
 <%= render :partial => "shared/flash_messages", :locals => {:flash => flash}%>
+<%= link_to :documentation, :documentation %>
 
 <%= yield %>
 
