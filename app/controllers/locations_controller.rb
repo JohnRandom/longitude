@@ -8,6 +8,26 @@ class LocationsController < ApplicationController
     @location = Location.new
   end
 
+  def index
+    @route = Route.find_by_id_and_user_id params[:route_id], current_user.id
+    @locations = @route.locations
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @locations }
+    end
+  end
+
+  def show
+    @route = Route.find_by_id_and_user_id params[:route_id], current_user.id
+    @location = @route.locations.find params[:id]
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @location }
+    end
+  end
+
   def create
     lat = params[:location][:latitude]
     long = params[:location][:longitude]
@@ -25,8 +45,6 @@ class LocationsController < ApplicationController
   def destroy
     @location = Location.find_by_id_and_user_id params[:id], current_user.id
     @location.destroy if @location
-
-    logger.debug "edit_route_url: #{edit_route_url params[:route_id]}"
 
     flash.alert = "Location deleted."
     respond_to do |format|

@@ -1,0 +1,10 @@
+<% if @route %><h1>Locations for '<%= @route.name %>'</h1><% end %>
+
+<table>
+  <% @locations.each do |l| %>
+    <tr>
+      <td><%= l.latitude %></td>
+      <td><%= l.longitude %></td>
+    </tr>
+  <% end %>
+</table>
