@@ -6,8 +6,14 @@ User.blueprint do
   email {"#{object.username}@localhost.com"}
 end
 
+Location.blueprint do
+  latitude { 1.0 }
+  longitude { 1.0 }
+  user_id { User.make.id }
+end
+
 Route.blueprint do
   name {"test route"}
-  user(1)
+  user_id { User.make.id }
   locations(3)
 end
