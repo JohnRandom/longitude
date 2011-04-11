@@ -8,5 +8,6 @@ describe Route do
     it 'should create validated records' do
       Route.create(:name => 'test', :user_id => 1).should_not be nil
     end
+
   end
 end

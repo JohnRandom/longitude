@@ -30,7 +30,7 @@ RSpec.configure do |config|
 end
 
 def log_in(user = nil)
-  returning user || stub_model(User) do |user|
+  user || stub_model(User) do |user|
     controller.stub(:current_user => user)
   end
 end
