@@ -5,7 +5,7 @@ class RoutesController < ApplicationController
   respond_to :html, :json
 
   def index
-    @routes = Route.where :user_id => current_user.id
+    @routes = current_user.routes
 
     respond_to do |format|
       format.html
@@ -14,7 +14,7 @@ class RoutesController < ApplicationController
   end
 
   def show
-    @route = Route.find_by_id_and_user_id!( params[:id], current_user.id )
+    @route = current_user.routes.find params[:id]
 
     respond_to do |format|
       format.html
@@ -29,12 +29,12 @@ class RoutesController < ApplicationController
   def create
     route_name = params[:route][:name]
 
-    @route = Route.create! :name => route_name, :user_id => current_user.id
+    route = current_user.routes.create name: route_name
 
     flash.alert = "Route created"
     respond_to do |format|
       format.html { redirect_to :action => :index and return }
-      format.json { render :json => @route }
+      format.json { render :json => route }
     end
   end
 
@@ -45,24 +45,23 @@ class RoutesController < ApplicationController
   def update
     new_route_name = params[:route][:name]
 
-    @route = Route.find_by_id_and_user_id! params[:id], current_user.id
-    @route.update_attribute( :name, new_route_name ) if @route
+    route = current_user.routes.find params[:id]
+    route.update_attribute( :name, new_route_name ) if route
 
-    flash.alert = "Route '#{@route.name}' updated"
+    flash.alert = "Route '#{route.name}' updated"
     respond_to do |format|
       format.html { redirect_to :action => :index and return }
-      format.json { render :json => @route }
+      format.json { render json: route }
     end
   end
 
   def destroy
-    @route = Route.find_by_id_and_user_id! params[:id], current_user.id
-    @route.destroy if @route
+    route = current_user.routes.find params[:id]
+    flash.alert = "Route '#{route.name}' deleted." if route.destroy
 
-    flash.alert = "Route '#{@route.name}' deleted."
     respond_to do |format|
       format.html { redirect_to :action => :index and return }
-      format.json { head :deleted }
+      format.json { head :ok }
     end
   end
 
