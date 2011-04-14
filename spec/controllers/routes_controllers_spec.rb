@@ -58,8 +58,8 @@ describe RoutesController do
 
     describe 'create' do
       it 'should create the record and return the location in the header' do
-        @user.routes.should_receive(:create).with(name: 'test_route').and_return(@route)
-        post :create, route: {name: 'test_route'}
+        @user.routes.should_receive(:create).with('name' => 'test_route').and_return(@route)
+        post :create, route: {'name' => 'test_route'}
       end
 
       it 'should redirect to index' do

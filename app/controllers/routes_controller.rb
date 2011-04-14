@@ -27,9 +27,7 @@ class RoutesController < ApplicationController
   end
 
   def create
-    route_name = params[:route][:name]
-
-    route = current_user.routes.create name: route_name
+    route = current_user.routes.create params[:route]
 
     flash.alert = "Route created"
     respond_to do |format|

@@ -8,6 +8,7 @@ describe LocationsController do
       @user = stub_model(User)
       @location = stub_model(Location)
       @route = stub_model(Route, locations: [@location])
+      @params = {latitude: 1.0, longitude: 1.0}.with_indifferent_access
       controller.stub(current_user: @user)
     end
 
@@ -61,9 +62,9 @@ describe LocationsController do
 
       it 'should create location on the specified route and assign @route and @location' do
         @user.routes.should_receive(:find).with(@route.id).and_return(@route)
-        @route.locations.should_receive(:create).with(latitude: 1.0, longitude: 1.0, user_id: @user.id).and_return(@location)
+        @route.locations.should_receive(:create).with(@params).and_return(@location)
 
-        post :create, route_id: @route.id, location: {latitude: 1.0, longitude: 1.0}
+        post :create, route_id: @route.id, location: @params
         assigns[:route].should == @route
         assigns[:location].should == @location
       end
@@ -72,7 +73,7 @@ describe LocationsController do
         @user.routes.stub(find: @route)
         @route.locations.stub(create: @location)
 
-        post :create, route_id: @route.id, location: {latitude: 1.0, longitude: 1.0}
+        post :create, route_id: @route.id, location: @params
         response.should redirect_to controller: :routes, action: :edit, id: @route.id
       end
 
@@ -80,7 +81,7 @@ describe LocationsController do
         @user.routes.stub(find: @route)
         @route.locations.stub(create: @location)
 
-        post :create, route_id: @route.id, location: {latitude: 1.0, longitude: 1.0}, format: :json
+        post :create, route_id: @route.id, location: @params, format: :json
         response.should be_ok
         response.body.should == @location.to_json
         response.content_type.should == 'application/json'

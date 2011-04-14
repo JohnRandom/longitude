@@ -29,11 +29,8 @@ class LocationsController < ApplicationController
   end
 
   def create
-    lat = params[:location][:latitude]
-    long = params[:location][:longitude]
-
     @route = current_user.routes.find params[:route_id]
-    @location = @route.locations.create :latitude => lat, :longitude => long, :user_id => current_user.id
+    @location = @route.locations.create params[:location]
 
     flash.alert = "Location '#{@location.latitude}:#{@location.longitude}' on '#{@route.name}' created"
     respond_to do |format|
