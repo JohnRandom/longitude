@@ -3,5 +3,5 @@ class Location < ActiveRecord::Base
 
   attr_accessible :latitude, :longitude
 
-  validates_presence_of :latitude, :longitude, :entity_id, :entity_type
+  validates_presence_of :latitude, :longitude, :entity_type, :entity_id
 end
