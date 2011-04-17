@@ -14,6 +14,8 @@ gem "bcrypt-ruby", :require => "bcrypt"
 # and rake tasks are available in development mode:
 group :development, :test do
   gem "rspec-rails", ">= 2.5.0"
+  gem 'cucumber-rails'
+  gem 'capybara'
   gem "faker"
   gem 'machinist', '>= 2.0.0.beta1'
   gem 'spork', '~> 0.9.0.rc'
